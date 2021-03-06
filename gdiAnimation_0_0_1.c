@@ -20,7 +20,6 @@ UINT_PTR lastKey;
 HDC hdc;
 char *dest, *begin;
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-int WINAPI FillEllipse(HDC hDC,CONST RECT *lprc,HBRUSH hbr);
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
 	dest = (char*) malloc(1024);
 	memcpy(dest, "SCORE: 00000000", 16);
@@ -168,8 +167,4 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
 		}
 	}
 	return DefWindowProc(hwnd, uMsg, wParam, lParam);
-}
-int WINAPI FillEllipse(HDC hDC,CONST RECT *lprc,HBRUSH hbr) {
-	SelectObject(hDC, hbr);
-	return Ellipse(hdc, lprc->left, lprc->top, lprc->right, lprc->bottom);
 }
